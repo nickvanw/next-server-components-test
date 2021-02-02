@@ -1,6 +1,6 @@
 import { createFromFetch } from 'react-server-dom-webpack'
 
-const endpoint = process.env.VERCEL_URL
+const endpoint = process.env.NEXT_PUBLIC_ENDPOINT
 
 const cache = new Map()
 
@@ -17,8 +17,9 @@ export function useServerResponse(location) {
   if (response) {
     return response
   }
+  console.log(process.env)
   response = createFromFetch(
-    fetch('https://'+endpoint + '/api?location=' + encodeURIComponent(key))
+    fetch(endpoint + '/api?location=' + encodeURIComponent(key))
   )
   cache.set(key, response)
   return response
