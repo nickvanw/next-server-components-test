@@ -6,12 +6,12 @@ import NotePreview from './NotePreview'
 import NoteEditor from './NoteEditor.client'
 import AuthButton from './AuthButton.server'
 
-const endpoint = process.env.ENDPOINT
+const endpoint = process.env.VERCEL_URL
 
 export default function Note({ selectedId, isEditing, login }) {
   const note =
     selectedId != null
-      ? fetch(`${endpoint}/api/notes/${selectedId}`).json()
+      ? fetch(`https://${endpoint}/api/notes/${selectedId}`).json()
       : null
 
   if (note === null) {
