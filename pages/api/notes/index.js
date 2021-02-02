@@ -9,6 +9,7 @@ export default async (req, res) => {
     console.time('get all items from db')
     const [val, _] = await db.promise().query("SELECT * FROM notes")
     console.timeEnd('get all items from db')
+    console.log(process.env)
     return res.send(JSON.stringify(val))
   }
 
