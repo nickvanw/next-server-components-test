@@ -3,10 +3,10 @@ import { fetch } from 'react-fetch'
 
 import SidebarNote from './SidebarNote'
 
-const endpoint = process.env.VERCEL_URL
+const endpoint = process.env.ENDPOINT
 
 export default function NoteList({ searchText }) {
-  const notes = fetch('https://'+endpoint + '/api/notes').json()
+  const notes = fetch(endpoint + '/api/notes').json()
 
   return notes.length > 0 ? (
     <ul className="notes-list">
