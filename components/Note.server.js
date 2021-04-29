@@ -11,7 +11,7 @@ const endpoint = process.env.VERCEL_URL
 export default function Note({ selectedId, isEditing, login }) {
   const note =
     selectedId != null
-      ? fetch(`https://${endpoint}/api/notes/${selectedId}`).json()
+      ? fetch(`http://${endpoint}/api/notes/${selectedId}`).json()
       : null
 
   if (note === null) {

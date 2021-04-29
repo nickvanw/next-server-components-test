@@ -1,4 +1,4 @@
-import db from '../../../libs/connection'
+import db from '../../../libs/db'
 import sendRes from '../../../libs/send-res-with-module-map'
 import session from '../../../libs/session'
 
@@ -8,7 +8,7 @@ export default async (req, res) => {
   const login = req.session.login
 
   console.time('get item from db')
-  const [val, _] = await db.promise().query("SELECT * FROM notes WHERE id = ? LIMIT 1", [id])
+  const [val, _] = await db.query("SELECT * FROM notes WHERE id = ? LIMIT 1", [id])
   const note = val[0]
   console.timeEnd('get item from db')
 
@@ -22,7 +22,7 @@ export default async (req, res) => {
     }
 
     console.time('delete item from db')
-    await db.promise().query("DELETE FROM notes WHERE id = ?", id)
+    await db.query("DELETE FROM notes WHERE id = ?", id)
     console.timeEnd('delete item from db')
 
     return sendRes(req, res, null)
@@ -34,7 +34,7 @@ export default async (req, res) => {
     }
 
     console.time('update item from db')
-    await db.promise().query("UPDATE notes SET body = ?, title = ? WHERE id = ?",
+    await db.query("UPDATE notes SET body = ?, title = ? WHERE id = ?",
       [req.body.body, req.body.title, id])
     console.timeEnd('update item from db')
 

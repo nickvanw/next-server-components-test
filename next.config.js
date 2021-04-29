@@ -1,7 +1,5 @@
 const ReactServerWebpackPlugin = require('react-server-dom-webpack/plugin')
 const fs = require('fs')
-const db = require('./libs/db')
-db.startAndMigrate('test')
 
 let manifest
 class CopyReactClientManifest {

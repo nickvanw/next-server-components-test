@@ -6,7 +6,7 @@ import SidebarNote from './SidebarNote'
 const endpoint = process.env.VERCEL_URL
 
 export default function NoteList({ searchText }) {
-  const notes = fetch('https://'+endpoint + '/api/notes').json()
+  const notes = fetch('http://'+endpoint + '/api/notes').json()
 
   return notes.length > 0 ? (
     <ul className="notes-list">
